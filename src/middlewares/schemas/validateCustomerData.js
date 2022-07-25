@@ -14,10 +14,7 @@ export function validateCustomerData(req, res, next) {
         cpf: Joi.string()
             .regex(/^[0-9]{11}$/)
             .required(),
-        birthday: Joi.date()
-            .format("YYYY-MM-DD")
-            .utc()
-            .required()
+        birthday: Joi.date().format("YYYY-MM-DD").utc().required(),
     });
 
     const { error } = customerSchema.validate(req.body);

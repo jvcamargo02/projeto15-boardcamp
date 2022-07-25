@@ -8,9 +8,11 @@ export async function availableCpf(req, res, next) {
             `SELECT * FROM customers WHERE cpf = '${cpf}'`
         );
 
-        isUser.length === 0
-            ? next()
-            : res.status(409).send("This cpf is already customer");
+        if (isUser.length !== 0) {
+            return res.status(409).send("This cpf is already customer");
+        }
+
+        next();
     } catch {
         res.status(500).send("An error occurred. Please try again later.");
     }
