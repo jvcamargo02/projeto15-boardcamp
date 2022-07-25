@@ -5,10 +5,8 @@ export async function availableCategory(req, res, next) {
 
     try {
         const { rows: availableCategoryName } = await clientDB.query(
-            `SELECT * FROM categories WHERE name ILIKE '${name}'`
+            `SELECT * FROM categories WHERE name = $1`, [name]
         );
-
-        console.log(availableCategoryName.length);
 
         if (availableCategoryName.length !== 0) {
             return res.status(409).send("This category is already registered");

@@ -20,7 +20,7 @@ async function postCategories(req, res) {
             name,
         ]);
 
-        res.sendStatus(201)
+        res.sendStatus(201);
     } catch {
         res.status(500).send("Error inserting into database");
     }

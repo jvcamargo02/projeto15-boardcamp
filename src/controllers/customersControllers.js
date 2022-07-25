@@ -10,6 +10,8 @@ async function getCustomers(req, res) {
                 [queryCpf]
             );
 
+            console.log(queryCpf)
+
             return res.status(200).send(customers);
         }
 
