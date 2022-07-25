@@ -72,7 +72,10 @@ async function postReturn(req, res) {
     const reqTime = dayjs().locale("pt-br").format("YYYY-MM-DD");
     const diff = dayjs(reqTime).diff(rental.rentDate, "day");
 
-    console.log(id)
+    if(rental.returnDate !== null ){
+        return res.status(404).send("This rental has already ended")
+    }
+
     if(diff > rental.daysRented){
         delayFee = (diff-rental.daysRented)*pricePerDay
     }
@@ -89,6 +92,10 @@ async function postReturn(req, res) {
 
 async function deleteRent (req, res) {
     const { rental } = res.locals
+
+    if(rental.returnDate === null ){
+        return res.status(404).send("This rental isn't ended")
+    }
     
     try{
         await clientDB.query(`

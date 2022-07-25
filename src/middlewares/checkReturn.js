@@ -12,10 +12,6 @@ export async function checkReturn (req, res, next) {
             return res.status(404).send("This rental isn't registered")
         }
 
-        if(rental[0].returnDate !== null ){
-            return res.status(404).send("this rental has already ended")
-        }
-
         res.locals.rental = rental[0]
 
         next()

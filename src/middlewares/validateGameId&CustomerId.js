@@ -22,11 +22,7 @@ export async function existingCustomerId(req, res, next) {
 }
 
 export async function existingGameId(req, res, next) {
-    let gameId = req.body.gameId
-
-    if(!gameId){
-        gameId = res.locals.rental.gameId
-    }
+    const gameId = req.body.gameId || res.locals.rental.gameId
 
     try {
         const { rows: existingGame } = await clientDB.query(
