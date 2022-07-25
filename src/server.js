@@ -5,6 +5,7 @@ import { connection as clientDB } from "./database/postgresClient.js";
 import customersRoute from "./routes/customersRoute.js";
 import categoriesRoute from "./routes/categoriesRoute.js";
 import gamesRoute from "./routes/gamesRoute.js";
+import rentalsRoute from "./routes/rentalsRoute.js"
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(customersRoute);
 app.use(categoriesRoute);
 app.use(gamesRoute);
+app.use(rentalsRoute)
 
 app.get("/", async (req, res) => {
     await clientDB.query(

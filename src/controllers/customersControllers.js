@@ -36,7 +36,7 @@ async function getCustomer(req, res) {
             return res.status(404).send("Customer not found");
         }
 
-        return res.status(200).send(customer);
+        return res.status(200).send(customer[0]);
     } catch {
         res.status(500).send("Error querying database");
     }
