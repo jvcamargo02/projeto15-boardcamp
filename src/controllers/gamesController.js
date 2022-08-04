@@ -24,7 +24,7 @@ async function getGames(req, res) {
 
 async function postGames(req, res) {
     const { name, image, stockTotal, categoryId, pricePerDay } = req.body;
-    console.log(stockTotal)
+
     try {
         await clientDB.query(
             `INSERT INTO games (name, image, "stockTotal", "categoryId", "pricePerDay") VALUES ($1, $2, $3, $4, $5)`,

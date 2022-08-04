@@ -53,7 +53,7 @@ export async function checkAvailability(req, res, next) {
             [gameId]
         );
 
-        if (availability[0].count >= availability[0].stockTotal) {
+        if (availability[0]?.count >= availability[0]?.stockTotal) {
             return res.status(400).send("Out of stock");
         }
 

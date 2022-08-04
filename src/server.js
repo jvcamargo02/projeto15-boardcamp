@@ -25,8 +25,6 @@ app.get("/", async (req, res) => {
         VALUES ('João Camargo', '21998899222', '01234567890', '1992-10-05')`
     );
 
-    /*     console.log(query.rows) */
-
     res.send("OK");
 });
 

@@ -3,14 +3,14 @@ import { connection as clientDB } from "../database/postgresClient.js";
 async function getCustomers(req, res) {
     const queryCpf = req.query.cpf;
 
+
     try {
         if (queryCpf) {
+
             const { rows: customers } = await clientDB.query(
                 `SELECT * FROM customers WHERE cpf LIKE '$1%'`,
                 [queryCpf]
             );
-
-            console.log(queryCpf)
 
             return res.status(200).send(customers);
         }
@@ -25,7 +25,6 @@ async function getCustomers(req, res) {
 }
 
 async function getCustomer(req, res) {
-    const customerId = req.params.id;
 
     try {
         const { rows: customer } = await clientDB.query(
